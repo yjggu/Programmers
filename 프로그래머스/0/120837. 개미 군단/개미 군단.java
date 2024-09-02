@@ -1,11 +1,13 @@
 class Solution {
     public int solution(int hp) {
-        int jang = hp/5;
-        hp %= 5 ;
-        int byeong = hp/3;
-        hp %= 3 ;
-        int ilban = hp;
+        int count = 0;
         
-     return jang+byeong+ilban;
+        count += hp/5;
+        hp = hp%5;
+        count += hp/3;
+        hp = hp%3;
+        count += hp;
+        
+        return count;
     }
 }

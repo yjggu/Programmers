@@ -1,10 +1,12 @@
 class Solution {
     public int solution(int n) {
-        for (int i = 1; i * i <= n; i++) {
-            if (i * i == n){
-                return 1;
-            }
+        double sqrt = Math.sqrt(n);
+        if(sqrt == (int)sqrt){
+            return 1;
         }
-        return 2; 
+        return 2;
     }
 }
+
+
+// isDigit()은 char타입에 대해서만 사용 가능

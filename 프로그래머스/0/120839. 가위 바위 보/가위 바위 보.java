@@ -1,18 +1,19 @@
-import java.util.Map;
-import java.util.HashMap;
-
 class Solution {
     public String solution(String rsp) {
-        Map<Character, Character> rspMap = new HashMap<>();
-        rspMap.put('2', '0');
-        rspMap.put('0', '5');
-        rspMap.put('5', '2');
+    // 가위 : 2, 바위 : 0, 보 : 5
+        StringBuilder sb = new StringBuilder();
         
-        StringBuilder result = new StringBuilder();
-        
-        for (char ch:rsp.toCharArray()){
-            result.append(rspMap.get(ch));
+        for(int i=0; i<rsp.length(); i++) {
+            char ch = rsp.charAt(i);
+            
+            if(ch=='2'){
+                sb.append('0');
+            } else if(ch=='0'){
+                sb.append('5');
+            } else if(ch=='5'){
+                sb.append('2');
+            }
         }
-        return result.toString();
+        return sb.toString();
     }
 }

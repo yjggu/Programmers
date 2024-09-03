@@ -1,11 +1,9 @@
 class Solution {
     public int solution(int a, int b) {
-        String sum_ab = "";
-        int mul_ab = 1;
+
+        int sum_ab = Integer.parseInt(String.valueOf(a) + String.valueOf(b));
+        int mul_ab = 2 * a * b;
         
-        sum_ab = Integer.toString(a) + Integer.toString(b);
-        mul_ab = 2*a*b;
-        
-        return (Integer.parseInt(sum_ab) > mul_ab) ? Integer.parseInt(sum_ab) : mul_ab;
+        return (sum_ab >= mul_ab) ? sum_ab : mul_ab;
     }
 }

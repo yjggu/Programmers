@@ -1,11 +1,11 @@
 class Solution {
     public int solution(int n) {
-        String num = Integer.toString(n);
-        int result = 0;
-        
-        for (char ch : num.toCharArray()) {
-            result += ch - '0';
+        int answer = 0;
+
+        while(n>0){
+            answer+=n%10;
+            n/=10;
         }
-        return result;
+        return answer;
     }
 }

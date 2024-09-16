@@ -1,29 +1,29 @@
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Comparator;
-
+import java.util.Arrays;
+import java.util.HashMap;
 
 class Solution {
     public int[] solution(int[] emergency) {
+
+        int[] sortedEmergency = emergency.clone();
         
-        List<int[]> idxList = new ArrayList<>();
-        for(int i=0; i<emergency.length; i++) {
-            idxList.add(new int[] {emergency[i], i});    // [값, 인덱스 형태로 저장]
+        Arrays.sort(sortedEmergency);
+        
+        for (int i = 0; i < sortedEmergency.length / 2; i++) {
+            int temp = sortedEmergency[i];
+            sortedEmergency[i] = sortedEmergency[sortedEmergency.length - 1 - i];
+            sortedEmergency[sortedEmergency.length - 1 - i] = temp;
         }
-        
-        idxList.sort(new Comparator<int[]>() {
-            @Override
-            public int compare(int[] a, int[] b){
-                return b[0] - a[0];
-            }
-        });
-        
+
+        HashMap<Integer, Integer> rankMap = new HashMap<>();
+        for (int i = 0; i < sortedEmergency.length; i++) {
+            rankMap.put(sortedEmergency[i], i + 1); 
+        }
+
         int[] result = new int[emergency.length];
-        for(int i=0; i<idxList.size(); i++) {
-            int originIdx = idxList.get(i)[1];
-            result [originIdx] = i+1;
+        for (int i = 0; i < emergency.length; i++) {
+            result[i] = rankMap.get(emergency[i]); 
         }
-        
+
         return result;
     }
 }
